@@ -1,0 +1,68 @@
+body { 
+	padding-top: 70px; 
+}
+
+footer {
+	background-color: #ddd;
+	margin-top: 10px;
+}
+#contentBlock {
+	padding-top: 10px;
+}
+
+address {
+	color: #555;
+}
+
+.centerfy img{
+    margin: 0 auto;
+}
+.centerfy{
+    text-align: center;
+}
+
+/*#notify {
+	color: #00CC00;
+}*/
+
+.error	{
+	color:red;
+}
+
+table {
+  overflow-x: scroll; 
+}
+
+.active:before {
+  position: absolute;
+  top: 5rem;
+  display: block;
+  height:0;
+  width:0;
+/*  margin-left: -1.9rem;*/
+  border-top: 2rem solid #000;
+  border-right: 14rem solid transparent;
+  content: "";  
+}
+.active:after {
+  position: absolute;
+  display: block;
+  height:0;
+  width:0;
+  /*margin-left: 3rem;*/
+  border-top: 2rem solid #000;
+  border-left: 14rem solid transparent;
+  content: "";  
+}
+.navbar-nav a {
+  min-width: 14rem;
+  text-align: center;
+}
+
+#btndownload {
+  margin-left: 8rem;
+}
+
+#ldapResult {
+  margin-left: 8rem;
+}
