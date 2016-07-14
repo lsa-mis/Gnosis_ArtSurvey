@@ -1,14 +1,14 @@
 # README #
 
-### LSA Art Survey ###
+### ArtSurvey ###
 
-* objective: Collect as much data about the art work that is located within the College of LSA
+* objective: For cataloging collections of things
 * v1.0
 
 ### Requires ###
 
-* Support/configArtSurvey.php located in a secure directory outside of the webroot
-* Support/basicLib.php located in a secure directory outside of the webroot
+* configArtSurvey.php located in a secure directory outside of the webroot
+* basicLib.php located in a secure directory outside of the webroot
 
 * Database is MYSQL
 * How to run tests
@@ -16,5 +16,5 @@
 
 ### Who do I talk to? ###
 
-* Rick Smoke - rsmoke@umich.edu
-*LSA MIS Department
+* Rick Smoke - rsmoke@umich.edu - @UMrsmoke
+* LSA MIS Department
