@@ -6,4 +6,4 @@ AuthType Cosign
 CosignRequireFactor   UMICH.EDU
 SSLRequireSSL
 #AuthLDAPURL ldap://ldap.umich.edu
-#Require ldap-group cn=engNelp40Admins,ou=User Groups,ou=Groups,dc=umich,dc=edu
+#Require ldap-group cn=<GroupName>,ou=User Groups,ou=Groups,dc=umich,dc=edu
