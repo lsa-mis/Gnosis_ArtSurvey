@@ -212,12 +212,11 @@ SQL;
     <div class="jumbotron">
       <div class="centerfy"><img src="img/banner.png" class="img-responsive" alt="LSA Logo" /></div>
       <h3>LSA Art Survey<br>
-      <small>Please use this form to enter information about valuable departmentally owned art. 
-      In this context, we use “art” to include all valuable objects. These might range from a painting, 
-      to valuable gems, to antique instruments, and might be on display or stored in the back of a cupboard. 
-      Our goal is to identify these items so that we can make sure that they are properly protected from theft 
-      or other damage. This listing does not apply to collections in LSA's research or public museums.  Mounted 
-      posters and pictures, book covers and other such items that do not have significant value (nominally under $100) 
+      <small>Please use this form to enter information about valuable departmentally owned art.
+      In this context, we use “art” to include all valuable objects. These might range from a painting,
+      to valuable gems, to antique instruments, and might be on display or stored in the back of a cupboard.
+      <br><br>This listing does not apply to collections in LSA's research or public museums.  Mounted
+      posters and pictures, book covers and other such items that do not have significant value (nominally under $1000)
       should not be entered. </small></h3>
     </div>
   </div>
@@ -457,11 +456,11 @@ SQL;
               </label>
             </div>
         </div>
-        <div class="form-group">
+<!--         <div class="form-group">
           <label for="valDetermined">Protective Measures in place</label>
           <textarea class="form-control" rows="3" tabindex="190" id="protection" name="protection"></textarea>
-        </div>
-        
+        </div> -->
+
             Select image to upload:
             <input type="file" name="fileToUpload" id="fileToUpload">
 

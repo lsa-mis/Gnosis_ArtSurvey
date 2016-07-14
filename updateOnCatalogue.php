@@ -72,7 +72,7 @@ if (isset($_POST['updateRecord'])) {
     if (strlen($deptContact) > 0 && strlen($department) > 0 && strlen($description) > 0 && strlen($locationBldg) > 0 && $value > 0 && strlen($valDetermined) > 0) {
             $sqlUpdate = <<<SQL
         UPDATE tbl_responses
-        SET 
+        SET
               `deptContact` = '$deptContact',
               `department` = '$department',
               `description` = '$description',
@@ -138,7 +138,7 @@ while ($row = $result->fetch_assoc()) {
         // protection
         // timestamp
 
-?>   
+?>
 
 
 
@@ -180,13 +180,13 @@ while ($row = $result->fetch_assoc()) {
         <ul class="nav navbar-nav">
           <li><a href="index.php">Home</a></li>
           <li class="active"><a href="reviewItems.php">Catalogue</a></li>
-        </ul> 
+        </ul>
         <div class="navbar-right">
         <span style="color:#eee;"><small>You are logged in as <?php echo $login_name; ?></small></span><br>
           <form class="navbar-form" role="logout" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
             <button type="logout" name="logout" class="btn btn-default btn-xs">LogOut</button>
           </form>
-        </div>  
+        </div>
       </div><!--/.nav-collapse -->
     </div>
   </div>
@@ -198,13 +198,13 @@ while ($row = $result->fetch_assoc()) {
       <div class="centerfy"><img src="img/banner.png" class="img-responsive" alt="LSA Logo" /></div>
             <h3>LSA Art Survey - Collections Management</h3>
     </div>
-  </div>  
+  </div>
   <div class="container">
     <div class="col-xs-7 col-xs-offset-2">
       <div id="notify"><?php echo $_SESSION['message'];  ?></div>
   <!-- Entry form, if existing record was clicked populate with fille din fields from DB -->
       <form id="recordForm" name="recordForm" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post" enctype="multipart/form-data">
-      <input type="hidden"  name="recid" value="<?php echo $recToEdit; ?>" /> 
+      <input type="hidden"  name="recid" value="<?php echo $recToEdit; ?>" />
         <!-- append form questions from database -->
         <div class="form-group required">
           <label for="description">Item Description</label>
@@ -441,6 +441,9 @@ while ($row = $result->fetch_assoc()) {
           <textarea class="form-control" rows="3" tabindex="190" id="protection" name="protection"><?php echo isset($protection) ? $protection : '';  ?></textarea>
         </div>
         <div class="form-group">
+        <?php
+        if ($imageFile === 'empty'){ $imageFile = "empty.png";}
+        ?>
           <a href="<?php echo $imageFile ?>"  target='_blank'><img src='<?php echo $imageFile ?>' width='30' height='30' class='img-rounded' ></a><br />
             <label for="fileToUpload">Select new image to upload</label>
             <input type="file" name="fileToUpload" id="fileToUpload">
@@ -456,7 +459,7 @@ while ($row = $result->fetch_assoc()) {
     <div class="col-xs-10 col-xs-offset-1">
     <!-- confirm section with answers -->
         <div id="existingRecords"></div>
-     </div> 
+     </div>
   </div>
 
   <footer class="container">
@@ -469,10 +472,10 @@ while ($row = $result->fetch_assoc()) {
         </address>
       </div>
       <div class="col-xs-4 col-xs-offset-2" >
-        <img src="img/lsa_mis.png" class="img-responsive" alt="MIS Logo"> 
+        <img src="img/lsa_mis.png" class="img-responsive" alt="MIS Logo">
       </div>
     </div>
-    <div class="row clearfix"> 
+    <div class="row clearfix">
         <p class="text-center"><small>Copyright &copy; 2014 by The Regents of the University of Michigan<br />
         All Rights Reserved.</small><br></p>
   </footer>
