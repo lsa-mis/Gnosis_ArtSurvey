@@ -22,14 +22,14 @@ if (isset($_POST['updateRecord'])) {
 
     if (strlen(basename($_FILES["fileToUpload"]["name"])) > 0) {
             $target_dir = "imagefiles/";
-            $target_file = $target_dir . getUTCTime() . basename($_FILES["fileToUpload"]["name"]);
+            $testFile = $target_file = $target_dir . getUTCTime() . basename($_FILES["fileToUpload"]["name"]);
             $uploadOk = 1;
             $fileErrMessage = "";
             $imageFileType = pathinfo($target_file, PATHINFO_EXTENSION);
             // Check if image file is a actual image or fake image
 
             $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
-        if ($check !== false) {
+        if ($check) {
                 //echo "Image file is an image - " . $check["mime"] . ".";
                 $uploadOk = 1;
         } else {
@@ -48,14 +48,14 @@ if (isset($_POST['updateRecord'])) {
             $uploadOk = 0;
         }
         // Allow certain file formats
-        if ($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
-        && $imageFileType != "gif" ) {
-            $fileErrMessage = $fileErrMessage . " Sorry, only JPG, JPEG, PNG & GIF image files are allowed.";
+        if (!(strtolower($imageFileType) == "jpg" || strtolower($imageFileType) == "png" || strtolower($imageFileType) == "jpeg"
+        || strtolower($imageFileType) == "gif" )) {
+            $fileErrMessage = $fileErrMessage . " Sorry, only jpg, jpeg, png & gif image files are allowed. FileType=> ".$imageFileType;
             $uploadOk = 0;
         }
         // Check if $uploadOk is set to 0 by an error
         if ($uploadOk == 0) {
-            $fileErrMessage = $fileErrMessage . " <br />=>Your image file was not uploaded. Confirm the image file is 2 megabytes or less and one of these types (JPG, JPEG, PNG & GIF), then edit the record and upload the image.";
+            $fileErrMessage = $fileErrMessage . " <br />=>Your image file was not uploaded. Confirm the image file is 2 megabytes or less and one of these types (jpg, jpeg, png or gif), then edit the record and upload the image.";
             $target_file = "empty";
         // if everything is ok, try to upload file
         } else {
@@ -63,7 +63,7 @@ if (isset($_POST['updateRecord'])) {
                 //echo "The file ". basename($_FILES["fileToUpload"]["name"]) . " has been uploaded.";
             } else {
                 $target_file = "empty";
-                $fileErrMessage = $fileErrMessage . "Sorry, there was an error uploading your file.";
+                $fileErrMessage = $fileErrMessage . "Sorry, there was an error uploading your file. FileName=> ".$testFile ." Error=> " .print_r(error_get_last());
             }
         }
     } else {
