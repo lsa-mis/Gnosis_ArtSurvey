@@ -111,22 +111,22 @@ SQL;
         db_fatal_error("data read issue", $db->error);
     }
       $_SESSION['message'] = "<h4 style='color: #FF0066;'>Be sure to fill in all the red outlined fields</h4>";
-}
-while ($row = $result->fetch_assoc()) {
-      $deptContact = $row["deptContact"];
-      $department = $row["department"];
-      $description = $row["description"];
-      $locationBldg = $row["locationBldg"];
-      $locationRoom = $row["locationRoom"];
-      $dateAcquired = $row["dateAcquired"];
-      $value = $row["value"];
-      $valDetermined = $row["valDetermined"];
-      $valDeterminedOther = $row["valDeterminedOther"];
-      $protection = $row["protection"];
-      $imageFile = $row["imageName"];
-      $_SESSION['imageFileHolder'] = $imageFile;
-}
 
+    while ($row = $result->fetch_assoc()) {
+          $deptContact = $row["deptContact"];
+          $department = $row["department"];
+          $description = $row["description"];
+          $locationBldg = $row["locationBldg"];
+          $locationRoom = $row["locationRoom"];
+          $dateAcquired = $row["dateAcquired"];
+          $value = $row["value"];
+          $valDetermined = $row["valDetermined"];
+          $valDeterminedOther = $row["valDeterminedOther"];
+          $protection = $row["protection"];
+          $imageFile = $row["imageName"];
+          $_SESSION['imageFileHolder'] = $imageFile;
+    }
+}
         // id
         // username
         // deptContact *
@@ -447,7 +447,7 @@ while ($row = $result->fetch_assoc()) {
         </div> -->
         <div class="form-group">
         <?php
-        if ($imageFile === 'empty'){ $imageFile = "empty.png";}
+        if ($imageFile === 'empty'){ $imageFile = "imagefiles/empty.png";}
         ?>
           <a href="<?php echo $imageFile ?>"  target='_blank'><img src='<?php echo $imageFile ?>' width='30' height='30' class='img-rounded' ></a><br />
             <label for="fileToUpload">Select new image to upload</label>
