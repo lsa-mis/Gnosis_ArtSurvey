@@ -435,7 +435,7 @@ SQL;
           </div>
         </div>
         <div class="form-group required">
-          <label for="value">Approximate Value <em class="text-primary">(to the nearest dollar amount)</em></label>
+          <label for="value">Approximate Value <em class="text-primary">(to the nearest dollar amount if known or 0)</em></label>
           <div class="input-group">
           <span class="input-group-addon">$</span>
           <input type="text" class="form-control bfh-phone" required tabindex="170" id="value" name="value" value="<?php echo isset($value) ? $value : null;  ?>" data-format="dddddddd" />
