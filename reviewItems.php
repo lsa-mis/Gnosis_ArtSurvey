@@ -78,7 +78,7 @@ if (isset($_GET["sort"])) {
         // valDeterminedOther
 
 
-?>   
+?>
 
 
 
@@ -122,14 +122,14 @@ if (isset($_GET["sort"])) {
           <li class="active"><a href="reviewItems.php">Catalogue</a></li>
 <?php if ($userMaster || $userDeptAdmin) {
     echo '<li><a href="adminmanager.php">Manage Access</a></li>';
-} ?>          
-        </ul> 
+} ?>
+        </ul>
         <div class="navbar-right">
         <span style="color:#eee;"><small>You are logged in as <?php echo $login_name; ?></small></span><br>
           <form class="navbar-form" role="logout" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
             <button type="logout" name="logout" class="btn btn-default btn-xs">LogOut</button>
           </form>
-        </div>  
+        </div>
       </div><!--/.nav-collapse -->
     </div>
   </div>
@@ -139,25 +139,25 @@ if (isset($_GET["sort"])) {
       <div class="centerfy"><img src="img/banner.png" class="img-responsive" alt="LSA Logo" /></div>
       <h3>LSA Art Survey - Collections Management</h3><br>
       <small>This section allows you to manage the collections in the <?php echo $siteTitle; ?> application.<br><br>
-      <button class='btn btn-xs btn-danger'><span class='glyphicon glyphicon-remove'></span></button> Clicking this button will delete the item.<br>
-      <button class='btn btn-xs btn-success'><span class='glyphicon glyphicon-pencil'></span></button> Click this button to edit the item.<br>
+      <button class='btn btn-xs btn-danger disabled'><span class='glyphicon glyphicon-remove'></span></button> Clicking this button will delete the item.<br>
+      <button class='btn btn-xs btn-success disabled'><span class='glyphicon glyphicon-pencil'></span></button> Click this button to edit the item.<br>
       <strong>Click 'active' column headers</strong> to sort items by that column.</small></h3>
     </div>
-  </div>  
+  </div>
   <div class="container">
   <div id="notify"><?php echo $_SESSION['message'];  ?></div>
     <div class="panel panel-default">
       <!-- Default panel contents -->
-      <div class="panel-heading"> 
+      <div class="panel-heading">
         <div class="btn-group" role="group" aria-label="action buttons">
           <form role="actionStuff" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
             <button type="addmore" name="addmore" class="btn btn-xs btn-info">Add an Item</button>
             <button type="logout" name="logout" class="btn btn-xs btn-warning">I'm Finished</button>
             <a href="download.php" data-toggle='tooltip' data-placement='top' title='Download these records' class="btn btn-xs btn-success"><span class="glyphicon glyphicon-floppy-save"</span></a>
-          </form> 
-        </div>   
-      </div>  
-    
+          </form>
+        </div>
+      </div>
+
         <!-- Table -->
         <div class=" table-responsive">
         <table id="catalogueList" class="table table-hover">
@@ -197,10 +197,10 @@ if (isset($_GET["sort"])) {
         </address>
       </div>
       <div class="col-xs-4 col-xs-offset-2" >
-        <img src="img/lsa_mis.png" class="img-responsive" alt="MIS Logo"> 
+        <img src="img/lsa_mis.png" class="img-responsive" alt="MIS Logo">
       </div>
     </div>
-    <div class="row clearfix"> 
+    <div class="row clearfix">
         <p class="text-center"><small>Copyright &copy; 2014 by The Regents of the University of Michigan<br />
         All Rights Reserved.</small></p>
   </footer>

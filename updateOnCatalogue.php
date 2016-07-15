@@ -180,6 +180,9 @@ while ($row = $result->fetch_assoc()) {
         <ul class="nav navbar-nav">
           <li><a href="index.php">Home</a></li>
           <li class="active"><a href="reviewItems.php">Catalogue</a></li>
+          <?php if ($userMaster || $userDeptAdmin) {
+          echo '<li><a href="adminmanager.php">Manage Access</a></li>';
+          } ?>
         </ul>
         <div class="navbar-right">
         <span style="color:#eee;"><small>You are logged in as <?php echo $login_name; ?></small></span><br>
@@ -202,7 +205,7 @@ while ($row = $result->fetch_assoc()) {
   <div class="container">
     <div class="col-xs-7 col-xs-offset-2">
       <div id="notify"><?php echo $_SESSION['message'];  ?></div>
-  <!-- Entry form, if existing record was clicked populate with fille din fields from DB -->
+  <!-- Entry form, if existing record was clicked populate with filled in fields from DB -->
       <form id="recordForm" name="recordForm" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post" enctype="multipart/form-data">
       <input type="hidden"  name="recid" value="<?php echo $recToEdit; ?>" />
         <!-- append form questions from database -->
@@ -436,10 +439,10 @@ while ($row = $result->fetch_assoc()) {
               </label>
             </div>
         </div>
-        <div class="form-group">
+ <!--        <div class="form-group">
           <label for="protection">Protective Measures in place</label>
           <textarea class="form-control" rows="3" tabindex="190" id="protection" name="protection"><?php echo isset($protection) ? $protection : '';  ?></textarea>
-        </div>
+        </div> -->
         <div class="form-group">
         <?php
         if ($imageFile === 'empty'){ $imageFile = "empty.png";}

@@ -3,7 +3,7 @@
   require_once($_SERVER["DOCUMENT_ROOT"] . "/../Support/configArtSurvey.php");
   require_once($_SERVER["DOCUMENT_ROOT"] . "/../Support/basicLib.php");
   $_SESSION['message'] = "<h4>&nbsp;</h4>";
-  
+
 if ($userMaster || $userDeptAdmin) {
     if (isset($_POST["logout"])) {
         $_SESSION['deptContact'] = null;
@@ -85,13 +85,13 @@ SQL;
           <li><a href="index.php">Home</a></li>
           <li><a href="reviewItems.php">Catalogue</a></li>
           <li class="active"><a href="adminmanager.php">Manage Access</a></li>
-        </ul> 
+        </ul>
         <div class="navbar-right">
         <span style="color:#eee;"><small>You are logged in as <?php echo $login_name; ?></small></span><br>
           <form class="navbar-form" role="logout" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
             <button type="logout" name="logout" class="btn btn-default btn-xs">LogOut</button>
           </form>
-        </div>  
+        </div>
       </div><!--/.nav-collapse -->
     </div>
   </div>
@@ -101,16 +101,16 @@ SQL;
   <div class="container">
     <div class="jumbotron">
       <div class="centerfy"><img src="img/banner.png" class="img-responsive" alt="LSA Logo" /></div>
-      <h3>LSA Art Survey - Administrator Management<br>
+      <h3>LSA Art Survey - Administrator Management</h3>
       <small>This section allows you to manage the users of the <?php echo $siteTitle; ?> application. Individuals can manage their own records they have submitted by default. By adding them here you are giving them access to manage the records associated with your deparment as well.<br><br>
-      <strong>First</strong>, enter the uniqname of the individual whom you want to grant the rights to view and manage records 
-      within your department.<br>
-      <strong>Second</strong>, select the department collection name you want this individual to manage.<br><br>
-      (<strong>NOTE: </strong>Individuals you grant these rights to can see, edit and delete all records that they have entered as well 
+      <strong>First</strong>: enter the uniqname of the individual whom you want to grant the rights to view and manage records
+      within your department.<br><br>
+      <strong>Second</strong>: select the department collection name you want this individual to manage.<br><br>
+      (<strong>NOTE: </strong>Individuals you grant these rights to can see, edit and delete all records that they have entered as well
       as any records that are associated to your department.)
-      </small></h3>
+      </small>
     </div>
-  </div>  
+  </div>
   <div class="container">
     <div class="col-xs-7 col-xs-offset-2">
       <div id="notify"><?php echo $_SESSION['message'];  ?></div>
@@ -307,7 +307,7 @@ SQL;
             <div data-value="Zoology Museum - 202500">Zoology Museum - 202500</div>
             <div data-value="Zoology Museum: ES George - 202600">Zoology Museum: ES George - 202600</div>
           </div>
-        </div>  
+        </div>
             <?php
         } else {
             ?>
@@ -321,8 +321,8 @@ SQL;
             }
         }
             ?>
-          </div> 
-        </div> 
+          </div>
+        </div>
         <div class="text-center">
          <button class="btn btn-info" tab-index="200" type="submitAdm" name="submitAdm" id="submitAdm">Submit</button>
         </div>
@@ -346,7 +346,7 @@ SQL;
           </tbody>
         </table>
         </div>
-     </div> 
+     </div>
   </div>
 
   <footer class="container">
@@ -359,10 +359,10 @@ SQL;
         </address>
       </div>
       <div class="col-xs-4 col-xs-offset-2" >
-        <img src="img/lsa_mis.png" class="img-responsive" alt="MIS Logo"> 
+        <img src="img/lsa_mis.png" class="img-responsive" alt="MIS Logo">
       </div>
     </div>
-    <div class="row clearfix"> 
+    <div class="row clearfix">
         <p class="text-center"><small>Copyright &copy; 2014 by The Regents of the University of Michigan<br />
         All Rights Reserved.</small><br></p>
   </footer>
@@ -373,7 +373,7 @@ SQL;
   <script src="js/myScripts.min.js"></script>
 
 </body>
-</html> 
+</html>
 <?php
 } else {
 ?>
@@ -412,13 +412,13 @@ SQL;
         <ul class="nav navbar-nav">
           <li><a href="index.php">Home</a></li>
           <li><a href="reviewItems.php">Catalogue</a></li>
-        </ul> 
+        </ul>
         <div class="navbar-right">
         <span style="color:#eee;"><small>You are logged in as <?php echo $login_name; ?></small></span><br>
           <form class="navbar-form" role="logout" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
             <button type="logout" name="logout" class="btn btn-default btn-xs">LogOut</button>
           </form>
-        </div>  
+        </div>
       </div><!--/.nav-collapse -->
     </div>
   </div>
@@ -431,9 +431,9 @@ SQL;
       <h3>LSA Art Survey<br>
         <h3 class="bg-warning">You are not authorized to view this page please return to the <a href="index.php"><?php echo $siteTitle ?></a>.</h3>
     </div>
-  </div> 
+  </div>
  </body>
- </html>   
+ </html>
 
 <?php
 }
