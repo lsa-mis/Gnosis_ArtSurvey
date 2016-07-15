@@ -20,7 +20,7 @@ if (isset($_POST['updateRecord'])) {
       $valDeterminedOther = $db->real_escape_string(test_input($_POST["valDeterminedOther"]));
       $protection = $db->real_escape_string(test_input($_POST["protection"]));
 
-    if (strlen(basename($_FILES["fileToUpload"]["name"])) > 8) {
+    if (strlen(basename($_FILES["fileToUpload"]["name"])) > 0) {
             $target_dir = "imagefiles/";
             $target_file = $target_dir . getUTCTime() . basename($_FILES["fileToUpload"]["name"]);
             $uploadOk = 1;
