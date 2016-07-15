@@ -13,11 +13,11 @@ if (session_status() == PHP_SESSION_NONE) {
 SQL;
 
 if (!$result = $db->query($sqlSelect)) {
-    db_fatal_error("data admin maintenance issue", $db->error);
+    db_fatal_error("data admin maintenance issue", $db->error, $sqlSelect, $login_name);
 } else {
     echo $recToRemove;
 }
 $db->close();
 } else {
-	db_fatal_error("$login_name is trying to delete the rsmoke Master account", $db->error);
+	db_fatal_error("$login_name is trying to delete the rsmoke Master account");
 }

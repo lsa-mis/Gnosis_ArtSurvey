@@ -32,7 +32,7 @@ if ($userMaster || $userDeptAdmin) {
             '$login_name')
 SQL;
             if (!$result = $db->query($sqlInsert)) {
-                 db_fatal_error("data insert issue", $db->error);
+                 db_fatal_error("data insert issue", $db->error, $sqlInsert, $login_name);
                 exit;
             }
 

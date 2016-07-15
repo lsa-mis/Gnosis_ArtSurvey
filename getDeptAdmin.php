@@ -21,7 +21,7 @@ SQL;
 SQL;
 }
 if (!$result = $db->query($sqlSelect)) {
-            db_fatal_error("data select issue", $db->error);
+            db_fatal_error("data select issue", $db->error, $sqlSelect, $login_name);
 } else {
     while ($row = $result->fetch_assoc()) {
         echo "<tr id=" . $row["id"] . ">";

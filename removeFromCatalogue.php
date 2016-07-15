@@ -14,7 +14,7 @@ if (session_status() == PHP_SESSION_NONE) {
 
 SQL;
 if (!$result = $db->query($sqlSelect)) {
-    db_fatal_error("data insert issue", $db->error);
+    db_fatal_error("data insert issue", $db->error, $sqlSelect, $login_name);
 } else {
                 echo $recToRemove;
 }

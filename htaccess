@@ -7,7 +7,7 @@
 # RewriteCond %{REMOTE_ADDR} !^141\.211\.136\.222
 # RewriteCond %{REQUEST_URI} !/closed-index.php$ [NC]
 # RewriteCond %{REQUEST_URI} !\.(jpe?g?|png|gif) [NC]
-# RewriteRule .* /DEV-WritingContest/closed-index.php [R=302,L]
+# RewriteRule .* /ArtSurvey/closed-index.php [R=302,L]
 #</IfModule>
 
 CosignProtected On

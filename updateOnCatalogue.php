@@ -90,7 +90,7 @@ if (isset($_POST['updateRecord'])) {
 
 SQL;
         if (!$result = $db->query($sqlUpdate)) {
-            db_fatal_error("data insert issue", $db->error);
+            db_fatal_error("data insert issue", $db->error, $sqlUpdate, $login_name);
         } else {
               echo $recToEdit;
         }
@@ -108,7 +108,7 @@ SQL;
 SQL;
 
     if (!$result = $db->query($sqlSelect)) {
-        db_fatal_error("data read issue", $db->error);
+        db_fatal_error("data read issue", $db->error, $sqlSelect, $login_name);
     }
       $_SESSION['message'] = "<h4 style='color: #FF0066;'>Be sure to fill in all the red outlined fields</h4>";
 
