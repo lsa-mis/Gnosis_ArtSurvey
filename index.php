@@ -236,7 +236,7 @@ SQL;
           <label for="department">Department</label>
           <div class="bfh-selectbox" data-name="department" required tabindex="120" data-value="<?php echo isset($_SESSION['department']) ? $_SESSION['department'] : '';  ?>" data-filter="true">
             <div data-value="0"></div>
-                <?php
+      <?php
         if ($userMaster) {
             ?>
             <div data-value="American Culture - 193000">American Culture - 193000</div>
