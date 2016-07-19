@@ -6,6 +6,8 @@ if (session_status() == PHP_SESSION_NONE) {
   require_once($_SERVER["DOCUMENT_ROOT"] . "/../Support/basicLib.php");
   $_SESSION['message'] = "<h4>&nbsp;</h4>";
 
+if ($userMaster || $userDeptAdmin || $workerbee) {
+
 if ($userMaster || $userDeptAdmin) {
     if (isset($_POST["logout"])) {
         $_SESSION['deptContact'] = null;
@@ -87,6 +89,11 @@ SQL;
           <li><a href="index.php">Home</a></li>
           <li><a href="reviewItems.php">Catalogue</a></li>
           <li class="active"><a href="adminmanager.php">Manage Access</a></li>
+<?php
+if ($userMaster ) {
+    echo '<li><a href="dashboard.php">Dashboard</a></li>';
+}
+?>
         </ul>
         <div class="navbar-right">
         <span style="color:#eee;"><small>You are logged in as <?php echo $login_name; ?></small></span><br>
@@ -332,6 +339,7 @@ SQL;
           <thead>
             <th>Actions</th>
             <th>uniqname</th>
+            <th>Role</th>
             <th>Department</th>
           </thead>
           <tbody>
@@ -430,5 +438,57 @@ SQL;
  </body>
  </html>
 
+<?php
+}
+$db->close();
+} else {
+  ?>
+  <!doctype html>
+
+  <html lang="en">
+        <head>
+          <meta charset="utf-8">
+
+          <title><?php echo $siteTitle; ?></title>
+          <meta name="description" content="<?php echo $siteTitle; ?>">
+          <meta name="rsmoke" content="LSA_MIS">
+
+          <link rel="shortcut icon" href="ico/favicon.ico">
+
+          <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
+          <link rel="stylesheet" href="css/bootstrap-theme.min.css" type="text/css">
+          <link rel="stylesheet" href="css/bootstrap-formhelpers.min.css" type="text/css">
+          <link rel="stylesheet" type="text/css" href="css/myStyles.css">
+
+          <!--[if lt IE 9]>
+          <script src="http://html5shiv-printshiv.googlecode.com/svn/trunk/html5.js"></script>
+          <![endif]-->
+        </head>
+
+        <body>
+          <div id="notAdmin">
+          <div class="row clearfix">
+            <div class="col-xs-8 col-xs-offset-2">
+              <div id="instructions" style="color:sienna;">
+                <h1 class="text-center" >You are not authorized to this space!!!</h1>
+                <h4 class="text-center" >University of Michigan - LSA Computer System Usage Policy</h4>
+                <p>This is the University of Michigan information technology environment. You
+                  MUST be authorized to use these resources. As an authorized user, by your use
+                  of these resources, you have implicitly agreed to abide by the highest
+                  standards of responsibility to your colleagues, -- the students, faculty,
+                  staff, and external users who share this environment. You are required to
+                  comply with ALL University policies, state, and federal laws concerning
+                  appropriate use of information technology. Non-compliance is considered a
+                  serious breach of community standards and may result in disciplinary and/or
+                legal action.</p>
+                <div class="text-center">
+                  <a href="http://www.umich.edu"><img alt="University of Michigan" src="img/michigan.png" height:280px;width:280px; /> </a>
+                </div>
+                </div><!-- #instructions -->
+              </div>
+            </div>
+          </div>
+        </body>
+      </html>
 <?php
 }

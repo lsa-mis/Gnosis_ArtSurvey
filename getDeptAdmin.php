@@ -7,17 +7,17 @@ if (session_status() == PHP_SESSION_NONE) {
 
 if ($userMaster) {
             $sqlSelect = <<<SQL
-            SELECT id, uniqname, dept
+            SELECT id, uniqname, usertype, dept
             FROM tbl_admmgr
-            ORDER BY dept
+            ORDER BY dept, usertype, uniqname
 SQL;
 } elseif ($userDeptAdmin) {
     $deptString = implode(",", $deptList);
         $sqlSelect = <<<SQL
-            SELECT id, uniqname, dept
+            SELECT id, uniqname, usertype, dept
             FROM tbl_admmgr
             WHERE (dept IN ($deptString)) AND (usertype <> 'Master')
-            ORDER BY uniqname
+            ORDER BY usertype, uniqname
 SQL;
 }
 if (!$result = $db->query($sqlSelect)) {
@@ -25,7 +25,7 @@ if (!$result = $db->query($sqlSelect)) {
 } else {
     while ($row = $result->fetch_assoc()) {
         echo "<tr id=" . $row["id"] . ">";
-        echo "<td><button id='delRecord' data-toggle='tooltip' data-placement='bottom' title='Delete this record' class='btn btn-xs btn-danger' value='" . $row["id"] . "'><span class='glyphicon glyphicon-remove'></span></button></td><td>" . $row["uniqname"] . "</td><td>" . $row["dept"] . "</td>";
+        echo "<td><button id='delRecord' data-toggle='tooltip' data-placement='bottom' title='Delete this record' class='btn btn-xs btn-danger' value='" . $row["id"] . "'><span class='glyphicon glyphicon-remove'></span></button></td><td>" . $row["uniqname"] . "</td><td>" . $row["usertype"] . "</td><td>" . $row["dept"] . "</td>";
         echo "</tr>";
     }
 }

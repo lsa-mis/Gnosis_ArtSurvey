@@ -7,6 +7,8 @@ if (session_status() == PHP_SESSION_NONE) {
 
     $_SESSION['message'] = "<h4>&nbsp;</h4>";
 
+    if ($userMaster || $userDeptAdmin || $workerbee) {
+
     //reset variables used in form
     $deptContact = $department = $description = $locationBldg = $locationRoom = null;
     $dateAcquired = $value = $valDetermined = $valDeterminedOther = $protection = $timestamp = null;
@@ -44,7 +46,6 @@ if (session_status() == PHP_SESSION_NONE) {
         $value = $db->real_escape_string((int)test_input(($_POST["value"])));
         $valDetermined = test_input($_POST["valDetermined"]);
         $valDeterminedOther = $db->real_escape_string(test_input($_POST["valDeterminedOther"]));
-        $protection = $db->real_escape_string(test_input($_POST["protection"]));
 
 
         if (strlen(basename($_FILES["fileToUpload"]["name"])) > 8) {
@@ -110,7 +111,6 @@ if (session_status() == PHP_SESSION_NONE) {
             `value`,
             `valDetermined`,
             `valDeterminedOther`,
-            `protection`,
             `imagename`)
             VALUES ('$login_name',
             '$deptContact',
@@ -122,7 +122,6 @@ if (session_status() == PHP_SESSION_NONE) {
             '$value',
             '$valDetermined',
             '$valDeterminedOther',
-            '$protection',
             '$target_file')
 SQL;
             if (!$result = $db->query($sqlInsert)) {
@@ -194,9 +193,14 @@ SQL;
         <ul class="nav navbar-nav">
           <li class="active"><a href="index.php">Home</a></li>
           <li><a href="reviewItems.php">Catalogue</a></li>
-<?php if ($userMaster || $userDeptAdmin) {
+<?php
+if ($userMaster || $userDeptAdmin) {
     echo '<li><a href="adminmanager.php">Manage Access</a></li>';
-} ?>
+}
+if ($userMaster ) {
+    echo '<li><a href="dashboard.php">Dashboard</a></li>';
+}
+?>
         </ul>
         <div class="navbar-right">
         <span style="color:#eee;"><small>You are logged in as <?php echo $login_name; ?></small></span><br>
@@ -468,10 +472,6 @@ SQL;
               </label>
             </div>
         </div>
-<!--         <div class="form-group">
-          <label for="valDetermined">Protective Measures in place</label>
-          <textarea class="form-control" rows="3" tabindex="190" id="protection" name="protection"></textarea>
-        </div> -->
 
             Select image to upload:
             <input type="file" name="fileToUpload" id="fileToUpload">
@@ -514,5 +514,56 @@ SQL;
 
 </body>
 </html>
-<?php ;
+<?php
 $db->close();
+} else {
+  ?>
+  <!doctype html>
+
+  <html lang="en">
+        <head>
+          <meta charset="utf-8">
+
+          <title><?php echo $siteTitle; ?></title>
+          <meta name="description" content="<?php echo $siteTitle; ?>">
+          <meta name="rsmoke" content="LSA_MIS">
+
+          <link rel="shortcut icon" href="ico/favicon.ico">
+
+          <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
+          <link rel="stylesheet" href="css/bootstrap-theme.min.css" type="text/css">
+          <link rel="stylesheet" href="css/bootstrap-formhelpers.min.css" type="text/css">
+          <link rel="stylesheet" type="text/css" href="css/myStyles.css">
+
+          <!--[if lt IE 9]>
+          <script src="http://html5shiv-printshiv.googlecode.com/svn/trunk/html5.js"></script>
+          <![endif]-->
+        </head>
+
+        <body>
+          <div id="notAdmin">
+          <div class="row clearfix">
+            <div class="col-xs-8 col-xs-offset-2">
+              <div id="instructions" style="color:sienna;">
+                <h1 class="text-center" >You are not authorized to this space!!!</h1>
+                <h4 class="text-center" >University of Michigan - LSA Computer System Usage Policy</h4>
+                <p>This is the University of Michigan information technology environment. You
+                  MUST be authorized to use these resources. As an authorized user, by your use
+                  of these resources, you have implicitly agreed to abide by the highest
+                  standards of responsibility to your colleagues, -- the students, faculty,
+                  staff, and external users who share this environment. You are required to
+                  comply with ALL University policies, state, and federal laws concerning
+                  appropriate use of information technology. Non-compliance is considered a
+                  serious breach of community standards and may result in disciplinary and/or
+                legal action.</p>
+                <div class="text-center">
+                  <a href="http://www.umich.edu"><img alt="University of Michigan" src="img/michigan.png" height:280px;width:280px; /> </a>
+                </div>
+                </div><!-- #instructions -->
+              </div>
+            </div>
+          </div>
+        </body>
+      </html>
+<?php
+}

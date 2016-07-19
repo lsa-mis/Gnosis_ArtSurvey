@@ -5,6 +5,8 @@ if (session_status() == PHP_SESSION_NONE) {
   require_once($_SERVER["DOCUMENT_ROOT"] . "/../Support/configArtSurvey.php");
   require_once($_SERVER["DOCUMENT_ROOT"] . "/../Support/basicLib.php");
 
+if ($userMaster || $userDeptAdmin || $workerbee) {
+
     $recToEdit = test_input($_POST["updateMe"]);
 
 if (isset($_POST['updateRecord'])) {
@@ -18,7 +20,6 @@ if (isset($_POST['updateRecord'])) {
       $value = $db->real_escape_string((int)test_input(($_POST["value"])));
       $valDetermined = test_input($_POST["valDetermined"]);
       $valDeterminedOther = $db->real_escape_string(test_input($_POST["valDeterminedOther"]));
-      $protection = $db->real_escape_string(test_input($_POST["protection"]));
 
     if (strlen(basename($_FILES["fileToUpload"]["name"])) > 0) {
             $target_dir = "imagefiles/";
@@ -84,7 +85,6 @@ if (isset($_POST['updateRecord'])) {
               `value` = '$value',
               `valDetermined` = '$valDetermined',
               `valDeterminedOther` = '$valDeterminedOther',
-              `protection` = '$protection',
               `imageName` = '$target_file'
         WHERE id = '$recid'
 
@@ -122,7 +122,6 @@ SQL;
           $value = $row["value"];
           $valDetermined = $row["valDetermined"];
           $valDeterminedOther = $row["valDeterminedOther"];
-          $protection = $row["protection"];
           $imageFile = $row["imageName"];
           $_SESSION['imageFileHolder'] = $imageFile;
     }
@@ -182,9 +181,14 @@ SQL;
         <ul class="nav navbar-nav">
           <li><a href="index.php">Home</a></li>
           <li class="active"><a href="reviewItems.php">Catalogue</a></li>
-          <?php if ($userMaster || $userDeptAdmin) {
-          echo '<li><a href="adminmanager.php">Manage Access</a></li>';
-          } ?>
+<?php
+if ($userMaster || $userDeptAdmin) {
+    echo '<li><a href="adminmanager.php">Manage Access</a></li>';
+}
+if ($userMaster ) {
+    echo '<li><a href="dashboard.php">Dashboard</a></li>';
+}
+?>
         </ul>
         <div class="navbar-right">
         <span style="color:#eee;"><small>You are logged in as <?php echo $login_name; ?></small></span><br>
@@ -451,10 +455,6 @@ SQL;
               </label>
             </div>
         </div>
- <!--        <div class="form-group">
-          <label for="protection">Protective Measures in place</label>
-          <textarea class="form-control" rows="3" tabindex="190" id="protection" name="protection"><?php echo isset($protection) ? $protection : '';  ?></textarea>
-        </div> -->
         <div class="form-group">
         <?php
         if ($imageFile === 'empty'){ $imageFile = "imagefiles/empty.png";}
@@ -502,10 +502,59 @@ SQL;
 
 </body>
 </html>
-<?php ;
-
-
+<?php
 $db->close();
+} else {
+  ?>
+  <!doctype html>
+
+  <html lang="en">
+        <head>
+          <meta charset="utf-8">
+
+          <title><?php echo $siteTitle; ?></title>
+          <meta name="description" content="<?php echo $siteTitle; ?>">
+          <meta name="rsmoke" content="LSA_MIS">
+
+          <link rel="shortcut icon" href="ico/favicon.ico">
+
+          <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
+          <link rel="stylesheet" href="css/bootstrap-theme.min.css" type="text/css">
+          <link rel="stylesheet" href="css/bootstrap-formhelpers.min.css" type="text/css">
+          <link rel="stylesheet" type="text/css" href="css/myStyles.css">
+
+          <!--[if lt IE 9]>
+          <script src="http://html5shiv-printshiv.googlecode.com/svn/trunk/html5.js"></script>
+          <![endif]-->
+        </head>
+
+        <body>
+          <div id="notAdmin">
+          <div class="row clearfix">
+            <div class="col-xs-8 col-xs-offset-2">
+              <div id="instructions" style="color:sienna;">
+                <h1 class="text-center" >You are not authorized to this space!!!</h1>
+                <h4 class="text-center" >University of Michigan - LSA Computer System Usage Policy</h4>
+                <p>This is the University of Michigan information technology environment. You
+                  MUST be authorized to use these resources. As an authorized user, by your use
+                  of these resources, you have implicitly agreed to abide by the highest
+                  standards of responsibility to your colleagues, -- the students, faculty,
+                  staff, and external users who share this environment. You are required to
+                  comply with ALL University policies, state, and federal laws concerning
+                  appropriate use of information technology. Non-compliance is considered a
+                  serious breach of community standards and may result in disciplinary and/or
+                legal action.</p>
+                <div class="text-center">
+                  <a href="http://www.umich.edu"><img alt="University of Michigan" src="img/michigan.png" height:280px;width:280px; /> </a>
+                </div>
+                </div><!-- #instructions -->
+              </div>
+            </div>
+          </div>
+        </body>
+      </html>
+<?php
+}
 
 
         // id +
