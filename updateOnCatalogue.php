@@ -72,7 +72,7 @@ if (isset($_POST['updateRecord'])) {
     }
 
 
-    if (strlen($deptContact) > 0 && strlen($department) > 0 && strlen($description) > 0 && strlen($locationBldg) > 0 && $value > 0 && strlen($valDetermined) > 0) {
+    if (strlen($deptContact) > 0 && strlen($department) > 2 && strlen($description) > 0 && strlen($locationBldg) > 0 && $value > 0 && strlen($valDetermined) > 0) {
             $sqlUpdate = <<<SQL
         UPDATE tbl_responses
         SET

@@ -217,7 +217,9 @@ if ($userMaster ) {
   <script src="js/bootstrap.min.js"></script>
   <script src="js/bootstrap-formhelpers.min.js"></script>
   <script src="js/myScripts.min.js"></script>
-
+<?php
+  $_SESSION['message'] = "<h4>&nbsp;</h4>";
+?>
 </body>
 </html>
 <?php

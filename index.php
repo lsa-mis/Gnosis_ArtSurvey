@@ -98,7 +98,7 @@ if (session_status() == PHP_SESSION_NONE) {
             $target_file = "empty";
         }
 
-        if (strlen($deptContact) > 0 && strlen($department) > 0 && strlen($description) > 0 && strlen($locationBldg) > 0 && $value > 0 && strlen($valDetermined) > 0) {
+        if (strlen($deptContact) > 0 && strlen($department) > 2 && strlen($description) > 0 && strlen($locationBldg) > 0 && $value > 0 && strlen($valDetermined) > 0) {
             $sqlInsert = <<<SQL
           INSERT INTO tbl_responses
             (`username`,

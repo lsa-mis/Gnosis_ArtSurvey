@@ -4,7 +4,7 @@ if (session_status() == PHP_SESSION_NONE) {
 }
   require_once($_SERVER["DOCUMENT_ROOT"] . "/../Support/configArtSurvey.php");
   require_once($_SERVER["DOCUMENT_ROOT"] . "/../Support/basicLib.php");
-  $_SESSION['message'] = "<h4>&nbsp;</h4>";
+ // $_SESSION['message'] = "<h4>&nbsp;</h4>";
 
 if ($userMaster || $userDeptAdmin || $workerbee) {
 
@@ -20,7 +20,8 @@ if ($userMaster || $userDeptAdmin) {
     if (isset($_POST["submitAdm"])) {
         $department = $db->real_escape_string(test_input($_POST["department"]));
         $newAdmin = test_input($_POST["newDeptAdmin"]);
-        if (strlen($newAdmin) > 0 && strlen($department)) {
+        $userRole = test_input($_POST["userRole"]);
+        if (strlen($newAdmin) > 0 && strlen($department) > 2 && strlen($userRole) > 1) {
             $sqlInsert = <<<SQL
             INSERT INTO tbl_admmgr
             (`uniqname`,
@@ -29,7 +30,7 @@ if ($userMaster || $userDeptAdmin) {
             `addedby`)
             VALUES
             ('$newAdmin',
-            'DeptAdmin',
+            '$userRole',
             '$department',
             '$login_name')
 SQL;
@@ -37,15 +38,15 @@ SQL;
                  db_fatal_error("data insert issue", $db->error, $sqlInsert, $login_name);
                 exit;
             }
-
-            $_SESSION['message'] = "<h4 style='color: #00CC00;'>$newAdmin can now manage all of the $department catalogue items.</h4>";
-            header("Location: reviewItems.php");
-            exit;
+            if ($userRole == "DeptAdmin"){
+              $_SESSION['message'] = "<h4 style='color: #00CC00;'>$newAdmin can now manage all the $department catalogue.</h4>";
+            } else {
+              $_SESSION['message'] = "<h4 style='color: #00CC00;'>$newAdmin can now enter items into the $department catalogue.</h4>";
+            }
         } else {
             $_SESSION['message'] = "<h4 style='color: #FF0066;'>Be sure to fill in all the red outlined fields</h4>";
         }
-
-         unset($_POST["submitAdm"]);
+        unset($_POST["submitAdm"]);
     }
 
 ?>
@@ -111,12 +112,18 @@ if ($userMaster ) {
     <div class="jumbotron">
       <div class="centerfy"><img src="img/banner.png" class="img-responsive" alt="LSA Logo" /></div>
       <h3>LSA Art Survey - Administrator Management</h3>
-      <small>This section allows you to manage the users of the <?php echo $siteTitle; ?> application. Individuals can manage their own records they have submitted by default. By adding them here you are giving them access to manage the records associated with your deparment as well.<br><br>
-      <strong>First</strong>: enter the uniqname of the individual whom you want to grant the rights to view and manage records
-      within your department.<br><br>
-      <strong>Second</strong>: select the department collection name you want this individual to manage.<br><br>
-      (<strong>NOTE: </strong>Individuals you grant these rights to can see, edit and delete all records that they have entered as well
-      as any records that are associated to your department.)
+      <small>This section allows you to manage the users of the <?php echo $siteTitle; ?> application.
+      By adding them here you are giving them access to manage the records associated with your deparment.<br><br>
+      <ol>
+      <li> Enter the uniqname of the individual whom you want to grant the rights to work with records
+      within your department.</li>
+      <li> Select the department name who's collection you want this individual to manage.</li>
+      </ol>
+      <strong>NOTE:</strong><ul>
+      <li>A user with <strong>Administrator</strong> rights can see, edit and delete all records that they have entered as well
+      as any records that are associated to your department.</li>
+      <li>A user with <strong>Recorder</strong> rights can see, edit and delete only the items they have entered.</li>
+      </ul>
       </small>
     </div>
   </div>
@@ -324,7 +331,17 @@ if ($userMaster ) {
             ?>
           </div>
         </div>
-
+         <div class="form-group required">
+          <label for="userRole">Select an access level</label><br>
+            <div class="col-xs-offset-1">
+              <label class="radio-inline">
+                <input type="radio" name="userRole" tabindex="140" id="radioCollector" value="Recorder" checked> Recorder
+              </label>
+              <label class="radio-inline">
+                <input type="radio" name="userRole" id="radioAdmin" value="DeptAdmin" > Administrator
+              </label>
+            </div>
+        </div>
         <div class="text-center">
          <button class="btn btn-info" tab-index="200" type="submitAdm" name="submitAdm" id="submitAdm">Submit</button>
         </div>
@@ -332,6 +349,7 @@ if ($userMaster ) {
     </div>
   </div><!-- close container -->
   <div class="row clearfix">
+  <hr>
     <div class="col-xs-6 col-xs-offset-3">
         <!-- Table -->
         <div class=" table-responsive">
@@ -374,7 +392,9 @@ if ($userMaster ) {
   <script src="js/bootstrap.min.js"></script>
   <script src="js/bootstrap-formhelpers.min.js"></script>
   <script src="js/myScripts.min.js"></script>
-
+<?php
+  $_SESSION['message'] = "<h4>&nbsp;</h4>";
+?>
 </body>
 </html>
 <?php
@@ -440,7 +460,7 @@ if ($userMaster ) {
 
 <?php
 }
-$db->close();
+
 } else {
   ?>
   <!doctype html>
