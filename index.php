@@ -236,6 +236,9 @@ SQL;
           <label for="department">Department</label>
           <div class="bfh-selectbox" data-name="department" required tabindex="120" data-value="<?php echo isset($_SESSION['department']) ? $_SESSION['department'] : '';  ?>" data-filter="true">
             <div data-value="0"></div>
+                <?php
+        if ($userMaster) {
+            ?>
             <div data-value="American Culture - 193000">American Culture - 193000</div>
             <div data-value="Anthro-History - 179200">Anthro-History - 179200</div>
             <div data-value="Anthropology - 172000">Anthropology - 172000</div>
@@ -414,6 +417,13 @@ SQL;
             <div data-value="Women's Studies - 188700">Women's Studies - 188700</div>
             <div data-value="Zoology Museum - 202500">Zoology Museum - 202500</div>
             <div data-value="Zoology Museum: ES George - 202600">Zoology Museum: ES George - 202600</div>
+      <?php
+        } else {
+            foreach ($deptList as $deptItem) {
+                echo "<div data-value=$deptItem>$deptItem</div>";
+            }
+        }
+            ?>
           </div>
         </div>
         <div class="form-group required">

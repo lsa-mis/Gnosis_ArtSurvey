@@ -123,13 +123,13 @@ SQL;
           <label for="newDeptAdmin">Enter the new department administrators uniqName</label>&nbsp;<a href="https://mcommunity.umich.edu/" target="_blank">Look up a uniqname in MCommunity</a>
           <input type="text" class="form-control" tabindex="110" id="newDeptAdmin" required name="newDeptAdmin" value=""/>
         </div>
-        <?php
-        if ($userMaster) {
-            ?>
         <div class="form-group required">
           <label for="department">Which department will this user administer?</label>
           <div class="bfh-selectbox" data-name="department" required tabindex="120" data-value="" data-filter="true">
             <div data-value="0"></div>
+        <?php
+        if ($userMaster) {
+            ?>
             <div data-value="American Culture - 193000">American Culture - 193000</div>
             <div data-value="Anthro-History - 179200">Anthro-History - 179200</div>
             <div data-value="Anthropology - 172000">Anthropology - 172000</div>
@@ -308,16 +308,8 @@ SQL;
             <div data-value="Women's Studies - 188700">Women's Studies - 188700</div>
             <div data-value="Zoology Museum - 202500">Zoology Museum - 202500</div>
             <div data-value="Zoology Museum: ES George - 202600">Zoology Museum: ES George - 202600</div>
-          </div>
-        </div>
-            <?php
+      <?php
         } else {
-            ?>
-        <div class="form-group required">
-          <label for="department">Which department will this user administer?</label>
-          <div class="bfh-selectbox" data-name="department" required tabindex="130" data-value="" data-filter="true">
-            <div data-value="0"></div>
-            <?php
             foreach ($deptList as $deptItem) {
                 echo "<div data-value=$deptItem>$deptItem</div>";
             }
@@ -325,6 +317,7 @@ SQL;
             ?>
           </div>
         </div>
+
         <div class="text-center">
          <button class="btn btn-info" tab-index="200" type="submitAdm" name="submitAdm" id="submitAdm">Submit</button>
         </div>
