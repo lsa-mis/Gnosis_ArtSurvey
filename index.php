@@ -324,6 +324,7 @@ if ($userMaster ) {
             <div data-value="History of Art - 179500">History of Art - 179500</div>
             <div data-value="Humanities Departments - 173000">Humanities Departments - 173000</div>
             <div data-value="Humanities Institute - 171100">Humanities Institute - 171100</div>
+            <div data-value="Humanities Collaboratory - 173100">Humanities Collaboratory - 173100</div>
             <div data-value="II: African Studies Center - 195400">II: African Studies Center - 195400</div>
             <div data-value="II: Armenian Studies - 195200">II: Armenian Studies - 195200</div>
             <div data-value="II: Atlantic Studies Init. - 191800">II: Atlantic Studies Init. - 191800</div>
