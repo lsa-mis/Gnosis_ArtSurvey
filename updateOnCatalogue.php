@@ -20,12 +20,12 @@ if (isset($_POST['updateRecord'])) {
       $value = $db->real_escape_string((int)test_input(($_POST["value"])));
       $valDetermined = test_input($_POST["valDetermined"]);
       $valDeterminedOther = $db->real_escape_string(test_input($_POST["valDeterminedOther"]));
+      $fileErrMessage = "";
 
     if (strlen(basename($_FILES["fileToUpload"]["name"])) > 0) {
             $target_dir = "imagefiles/";
             $testFile = $target_file = $target_dir . getUTCTime() . basename($_FILES["fileToUpload"]["name"]);
             $uploadOk = 1;
-            $fileErrMessage = "";
             $imageFileType = pathinfo($target_file, PATHINFO_EXTENSION);
             // Check if image file is a actual image or fake image
 
@@ -96,7 +96,7 @@ SQL;
         }
             unset($_POST["updateRecord"]);
             $_SESSION['message'] = "<h4 style='color: #00CC00;'>The record for $description has been updated</h4>". $fileErrMessage;
-            header("Location: reviewItems.php");
+            safeRedirect("reviewItems.php");
             exit;
     }
 } else {

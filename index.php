@@ -46,13 +46,12 @@ if (session_status() == PHP_SESSION_NONE) {
         $value = $db->real_escape_string((int)test_input(($_POST["value"])));
         $valDetermined = test_input($_POST["valDetermined"]);
         $valDeterminedOther = $db->real_escape_string(test_input($_POST["valDeterminedOther"]));
-
+        $fileErrMessage = "";
 
         if (strlen(basename($_FILES["fileToUpload"]["name"])) > 8) {
             $target_dir = "imagefiles/";
             $target_file = $target_dir . getUTCTime() . basename($_FILES["fileToUpload"]["name"]);
             $uploadOk = 1;
-            $fileErrMessage = "";
             $imageFileType = pathinfo($target_file, PATHINFO_EXTENSION);
             // Check if image file is a actual image or fake image
 
@@ -130,7 +129,7 @@ SQL;
             }
 
             $_SESSION['message'] = "<h4 style='color: #00CC00;'>The $description has been submitted</h4>" . $fileErrMessage;
-            header("Location: reviewItems.php");
+            safeRedirect("reviewItems.php");
             exit;
         } else {
             $_SESSION['message'] = "<h4 style='color: #FF0066;'>Be sure to fill in all the red outlined fields</h4>";
