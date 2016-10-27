@@ -473,7 +473,7 @@ if ($userMaster ) {
             </div>
         </div>
 
-            Select image to upload:
+            Select image to upload <em>(Image file needs to be less than 2MB)</em>:
             <input type="file" name="fileToUpload" id="fileToUpload">
 
         <div class="text-center">
