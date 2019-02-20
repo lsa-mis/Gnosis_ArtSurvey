@@ -77,12 +77,12 @@ if (session_status() == PHP_SESSION_NONE) {
             // Allow certain file formats
             if ($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
             && $imageFileType != "gif" ) {
-                $fileErrMessage = $fileErrMessage . " Sorry, only JPG, JPEG, PNG & GIF image files are allowed.";
+                $fileErrMessage = $fileErrMessage . " Sorry, only jpg, jpeg, png or gif image files are allowed.";
                 $uploadOk = 0;
             }
         // Check if $uploadOk is set to 0 by an error
             if ($uploadOk == 0) {
-                $fileErrMessage = $fileErrMessage . " <br />=>Your image file was not uploaded. Confirm the image file is 2 megabytes or less and one of these types (JPG, JPEG, PNG & GIF), then edit the record and upload the image.";
+                $fileErrMessage = $fileErrMessage . " <br />=>Your image file was not uploaded. Confirm the image file is 2 megabytes or less and one of these types (jpg, jpeg, png or gif), then edit the record and upload the image.";
                 $target_file = "empty";
             // if everything is ok, try to upload file
             } else {
@@ -418,7 +418,7 @@ if ($userMaster ) {
             <div data-value="UG: UROP - 171400">UG: UROP - 171400</div>
             <div data-value="Undergraduate Education - 171301">Undergraduate Education - 171301</div>
             <div data-value="Weinberg Inst for Cog Science - 181250">Weinberg Inst for Cog Science - 181250</div>
-            <div data-value="Women's Studies - 188700">Women's Studies - 188700</div>
+            <div data-value="Womens Studies - 188700">Womens Studies - 188700</div>
             <div data-value="Zoology Museum - 202500">Zoology Museum - 202500</div>
             <div data-value="Zoology Museum: ES George - 202600">Zoology Museum: ES George - 202600</div>
       <?php
@@ -473,7 +473,7 @@ if ($userMaster ) {
             </div>
         </div>
 
-            Select image to upload <em>(Image file needs to be less than 2MB)</em>:
+            Select image to upload <em>(Image file needs to be less than 2MB and one of these types (jpg, jpeg, png or gif))</em>:
             <input type="file" name="fileToUpload" id="fileToUpload">
 
         <div class="text-center">

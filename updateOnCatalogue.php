@@ -402,7 +402,7 @@ if ($userMaster ) {
             <div data-value="UG: UROP - 171400">UG: UROP - 171400</div>
             <div data-value="Undergraduate Education - 171301">Undergraduate Education - 171301</div>
             <div data-value="Weinberg Inst for Cog Science - 181250">Weinberg Inst for Cog Science - 181250</div>
-            <div data-value="Women's Studies - 188700">Women's Studies - 188700</div>
+            <div data-value="Womens Studies - 188700">Womens Studies - 188700</div>
             <div data-value="Zoology Museum - 202500">Zoology Museum - 202500</div>
             <div data-value="Zoology Museum: ES George - 202600">Zoology Museum: ES George - 202600</div>
       <?php
@@ -463,6 +463,7 @@ if ($userMaster ) {
           <a href="<?php echo $imageFile ?>"  target='_blank'><img src='<?php echo $imageFile ?>' width='30' height='30' class='img-rounded' ></a><br />
             <label for="fileToUpload">Select new image to upload</label>
             <input type="file" name="fileToUpload" id="fileToUpload">
+            <em>(Image file needs to be less than 2MB and one of these types (jpg, jpeg, png or gif))</em>
         </div>
 
         <div class="text-center">
