@@ -264,7 +264,7 @@ if ($userMaster ) {
             <div data-value="Dean: Academic Affairs - 170300">Dean: Academic Affairs - 170300</div>
             <div data-value="Dean: Auxiliary Services - 170700">Dean: Auxiliary Services - 170700</div>
             <div data-value="Dean: Classrooms - 171000">Dean: Classrooms - 171000</div>
-            <div data-value="Dean: Dean's Office - 174200">Dean: Dean's Office - 174200</div>
+            <div data-value="Dean: Deans Office - 174200">Dean: Deans Office - 174200</div>
             <div data-value="Dean: Development - 170200">Dean: Development - 170200</div>
             <div data-value="Dean: East Hall Tech Svcs - 185600">Dean: East Hall Tech Svcs - 185600</div>
             <div data-value="Dean: Facilities - 170110">Dean: Facilities - 170110</div>
