@@ -123,6 +123,15 @@ if ($userMaster ) {
       <li>A user with <strong>Administrator</strong> rights can see, edit and delete all records that they have entered as well
       as any records that are associated to your department.</li>
       <li>A user with <strong>Recorder</strong> rights can see, edit and delete only the items they have entered.</li>
+    <?php
+      if ($userMaster) {
+      ?>
+        <li>**IMPORTANT NOTICE FOR THE <strong>Master</strong>strong> ROLE <br>
+          Giving the role of <strong>Master</strong> to any user should allows full managment access to all department records. use this role sparingly
+        </li>
+    <?php
+      }
+    ?>
       </ul>
       </small>
     </div>
