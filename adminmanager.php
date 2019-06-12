@@ -126,8 +126,8 @@ if ($userMaster ) {
     <?php
       if ($userMaster) {
       ?>
-        <li>**IMPORTANT NOTICE FOR THE <strong>Master</strong>strong> ROLE <br>
-          Giving the role of <strong>Master</strong> to any user should allows full managment access to all department records. use this role sparingly
+        <li>**IMPORTANT NOTICE FOR THE <strong>Master</strong> ROLE **<br>
+          Giving the role of <strong>Master</strong> to any user allows full managment access to all department records. Use this role sparingly
         </li>
     <?php
       }
