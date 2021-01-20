@@ -1,5 +1,5 @@
 <?php
-require_once($_SERVER["DOCUMENT_ROOT"] . '/../Support/configArtSurvey.php');
+  require_once($_SERVER["DOCUMENT_ROOT"] . "/artSurveyConfig.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">
