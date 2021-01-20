@@ -2,8 +2,8 @@
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
-  require_once($_SERVER["DOCUMENT_ROOT"] . "/../Support/configArtSurvey.php");
-  require_once($_SERVER["DOCUMENT_ROOT"] . "/../Support/basicLib.php");
+  require_once($_SERVER["DOCUMENT_ROOT"] . "/artSurveyConfig.php");
+  require_once($_SERVER["DOCUMENT_ROOT"] . "/basicLib.php");
 
 if ($userMaster){
 
