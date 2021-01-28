@@ -10,8 +10,6 @@ define('HOST', getenv('db_host', true) ?: getenv('db_host'));
 define('URL', "");
 define('METAAUTHOR', "LSA_MIS_rsmoke");
 
-echo(USERNAME);
-exit;
 //database connection setup
 $db = new mysqli(HOST, USERNAME, PASSWORD, DATABASE);
 
