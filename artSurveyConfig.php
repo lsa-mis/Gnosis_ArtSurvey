@@ -3,10 +3,10 @@ if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
 
-define('USERNAME', getenv(‘db_user’, true) ?: getenv(‘db_user’));
-define('PASSWORD', getenv(‘db_password’, true) ?: getenv(‘db_password’));
-define('DATABASE', getenv(‘db_name’, true) ?: getenv(‘db_name’));
-define('HOST', getenv(‘db_host’, true) ?: getenv(‘db_host’));
+define('USERNAME', getenv('db_user', true) ?: getenv('db_user'));
+define('PASSWORD', getenv('db_password', true) ?: getenv('db_password'));
+define('DATABASE', getenv('db_name', true) ?: getenv('db_name'));
+define('HOST', getenv('db_host', true) ?: getenv('db_host'));
 define('URL', "");
 define('METAAUTHOR', "LSA_MIS_rsmoke");
 
